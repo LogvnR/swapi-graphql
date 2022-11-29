@@ -13,13 +13,18 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
-    "\n  query GetFilm($filmId: ID) {\n    film(filmID: $filmId) {\n      title\n      releaseDate\n    }\n  }\n": types.GetFilmDocument,
+    "\n  query Query {\n    allFilms {\n      films {\n        id\n        episodeID\n        title\n      }\n    }\n  }\n": types.QueryDocument,
+    "\n  query GetFilm($filmId: ID) {\n    film(id: $filmId) {\n      title\n      releaseDate\n    }\n  }\n": types.GetFilmDocument,
 };
 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query GetFilm($filmId: ID) {\n    film(filmID: $filmId) {\n      title\n      releaseDate\n    }\n  }\n"): (typeof documents)["\n  query GetFilm($filmId: ID) {\n    film(filmID: $filmId) {\n      title\n      releaseDate\n    }\n  }\n"];
+export function graphql(source: "\n  query Query {\n    allFilms {\n      films {\n        id\n        episodeID\n        title\n      }\n    }\n  }\n"): (typeof documents)["\n  query Query {\n    allFilms {\n      films {\n        id\n        episodeID\n        title\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query GetFilm($filmId: ID) {\n    film(id: $filmId) {\n      title\n      releaseDate\n    }\n  }\n"): (typeof documents)["\n  query GetFilm($filmId: ID) {\n    film(id: $filmId) {\n      title\n      releaseDate\n    }\n  }\n"];
 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
