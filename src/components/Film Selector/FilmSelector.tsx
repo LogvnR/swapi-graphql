@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { graphql } from '../../gql/gql';
+import { graphql } from '../../../gql/gql';
 
 const GET_FILMS = graphql(/* GraphQL */ `
   query Query {
@@ -23,6 +23,7 @@ const FilmSelector = ({ setFilm }: FilmSelectorProps) => {
   console.log('All Films', data);
   return (
     <select name="film" id="film" onChange={(e) => setFilm(e.target.value)}>
+      <option value="0">Select A Film</option>
       {data?.allFilms?.films?.map((film) => (
         <option value={film?.id} key={film?.episodeID}>
           {film?.title}

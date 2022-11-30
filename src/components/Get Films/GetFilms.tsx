@@ -1,10 +1,11 @@
 import { useQuery } from '@apollo/client';
-import { graphql } from '../../gql/gql';
+import { graphql } from '../../../gql/gql';
 
 const GET_FILM = graphql(/* GraphQL */ `
   query GetFilm($filmId: ID) {
     film(id: $filmId) {
       title
+      episodeID
       releaseDate
     }
   }
@@ -30,6 +31,7 @@ const GetFilm = ({ filmId }: FilmProps) => {
     <>
       <div>
         <h4>{data?.film?.title}</h4>
+        <p>{data?.film?.episodeID}</p>
         <p>{data?.film?.releaseDate}</p>
       </div>
     </>
