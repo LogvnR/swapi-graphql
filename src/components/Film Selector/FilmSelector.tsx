@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { graphql } from '../../../gql/gql';
 
-const GET_FILMS = graphql(/* GraphQL */ `
+export const GET_FILMS = graphql(/* GraphQL */ `
   query Query {
     allFilms {
       films {
