@@ -1,5 +1,5 @@
 import FilmSelector, { GET_FILMS } from './FilmSelector';
-import { screen, render, fireEvent } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import { vi } from 'vitest';
 
@@ -64,6 +64,8 @@ describe('FilmSelector', () => {
         <FilmSelector setFilm={mockSetFilm} />
       </MockedProvider>
     );
+
+    expect(await screen.findByText('Loading...')).toBeInTheDocument();
 
     expect(await screen.findByText(/a new hope/i)).toBeInTheDocument();
   });

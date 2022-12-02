@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import FilmSelector from '../Film Selector/FilmSelector';
-import Film from '../Get Films/GetFilms';
+import GetFilm from '../Get Films/GetFilm';
 
 const Films = () => {
   const [userFilmSelect, setUserFilmSelect] = useState<string>('0');
@@ -14,7 +14,7 @@ const Films = () => {
       {userFilmSelect === '0' ? (
         <p>Please Select A Film</p>
       ) : (
-        <Film filmId={userFilmSelect} />
+        <GetFilm filmId={userFilmSelect} />
       )}
     </div>
   );

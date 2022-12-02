@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { graphql } from '../../../gql/gql';
 
-const GET_FILM = graphql(/* GraphQL */ `
+export const GET_FILM = graphql(/* GraphQL */ `
   query GetFilm($filmId: ID) {
     film(id: $filmId) {
       title

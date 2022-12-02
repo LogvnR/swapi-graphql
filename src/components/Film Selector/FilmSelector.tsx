@@ -20,6 +20,8 @@ interface FilmSelectorProps {
 const FilmSelector = ({ setFilm }: FilmSelectorProps) => {
   const { data, loading } = useQuery(GET_FILMS);
 
+  if (loading) return <p>Loading...</p>;
+
   console.log('All Films', data);
   return (
     <select name="film" id="film" onChange={(e) => setFilm(e.target.value)}>

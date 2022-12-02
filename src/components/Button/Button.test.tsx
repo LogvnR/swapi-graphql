@@ -3,11 +3,12 @@ import { screen, render, fireEvent } from '@testing-library/react';
 
 describe('button', () => {
   it('renders', () => {
-    render(<Button />);
+    const { debug, getByRole } = render(<Button />);
 
-    const button = screen.getByRole('button');
+    const button = getByRole('button');
 
     expect(button).toBeInTheDocument();
+    debug();
   });
 
   it('changes text value when clicked', () => {
