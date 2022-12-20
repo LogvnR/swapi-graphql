@@ -2,7 +2,30 @@
 import * as types from './graphql';
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 
-const documents = [];
+/**
+ * Map of all GraphQL operations in the project.
+ *
+ * This map has several performance disadvantages:
+ * 1. It is not tree-shakeable, so it will include all operations in the project.
+ * 2. It is not minifiable, so the string of a GraphQL query will be multiple times inside the bundle.
+ * 3. It does not support dead code elimination, so it will add unused operations.
+ *
+ * Therefore it is highly recommended to use the babel-plugin for production.
+ */
+const documents = {
+    "\n  query Query {\n    allFilms {\n      films {\n        id\n        episodeID\n        title\n      }\n    }\n  }\n": types.QueryDocument,
+    "\n  query GetFilm($filmId: ID) {\n    film(id: $filmId) {\n      title\n      episodeID\n      releaseDate\n    }\n  }\n": types.GetFilmDocument,
+};
+
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query Query {\n    allFilms {\n      films {\n        id\n        episodeID\n        title\n      }\n    }\n  }\n"): (typeof documents)["\n  query Query {\n    allFilms {\n      films {\n        id\n        episodeID\n        title\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query GetFilm($filmId: ID) {\n    film(id: $filmId) {\n      title\n      episodeID\n      releaseDate\n    }\n  }\n"): (typeof documents)["\n  query GetFilm($filmId: ID) {\n    film(id: $filmId) {\n      title\n      episodeID\n      releaseDate\n    }\n  }\n"];
+
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  *
